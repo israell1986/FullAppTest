@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="contentCategoriesAdapter"
+            type="android.widget.ArrayAdapter" />
+        
+        <variable
+            name="contentClickHandler"
+            type="com.example.fullapptest.view.MainActivity.MainActivityClickHandler" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="10dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".view.MainActivity">
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:adapter="@{contentCategoriesAdapter}"
+            app:layout_constraintStart_toStartOf="parent"
+            android:onItemSelected="@{contentClickHandler::onselectItem}"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.appcompat.widget.AppCompatSpinner>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+
+            android:id="@+id/bookList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/book_item" />
+
+
+    </LinearLayout>
+
+</layout>
